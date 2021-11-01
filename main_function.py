@@ -1,22 +1,23 @@
-
 from sklearn.feature_extraction.text import TfidfVectorizer
+import firebase_admin
+from firebase_admin import credentials
+
+from firebase_admin import db
+
+import numpy as np
+import pandas as pd
+
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+
+cred = credentials.Certificate('gfi-rec-firebase-adminsdk-j8kaf-b945a590a2.json')
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://gfi-rec-default-rtdb.firebaseio.com/'
+})
 
 
 def ssd_rtdb(user_id):
-    import numpy as np
-    import pandas as pd
-
-    import firebase_admin
-    from firebase_admin import credentials
-    from firebase_admin import db
-
-    from sklearn.feature_extraction.text import CountVectorizer
-    from sklearn.metrics.pairwise import cosine_similarity
-
-    cred = credentials.Certificate('gfi-rec-firebase-adminsdk-j8kaf-b945a590a2.json')
-    firebase_admin.initialize_app(cred, {
-        'databaseURL': 'https://gfi-rec-default-rtdb.firebaseio.com/'
-    })
 
     prod_id = db.reference().child('rec_choice').child(user_id).child('prod_id').get()
     min_price = db.reference().child('rec_choice').child(user_id).child('min_price').get()
