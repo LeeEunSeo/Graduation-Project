@@ -302,13 +302,19 @@ def ssd_rtdb(user_id):
         sim_scores = [(pro2id[i], score) for i, score in sim_scores[0:10]]
 
         rec_ref = db.reference().child('rec').child(user_id)
-        rec_ref.set({'1': sim_scores[0][0],
-                     '2': sim_scores[1][0],
-                     '3': sim_scores[2][0],
-                     '4': sim_scores[3][0],
-                     '5': sim_scores[4][0],
-                     '6': sim_scores[5][0],
-                     '7': sim_scores[6][0],
-                     '8': sim_scores[7][0],
-                     '9': sim_scores[8][0],
-                     '10': sim_scores[9][0]})
+         data = {}
+        i = 0
+        for name, score in sim_scores:
+            data[str(i + 1)] = name
+            i += 1
+        rec_ref.set(data)
+#         rec_ref.set({'1': sim_scores[0][0],
+#                      '2': sim_scores[1][0],
+#                      '3': sim_scores[2][0],
+#                      '4': sim_scores[3][0],
+#                      '5': sim_scores[4][0],
+#                      '6': sim_scores[5][0],
+#                      '7': sim_scores[6][0],
+#                      '8': sim_scores[7][0],
+#                      '9': sim_scores[8][0],
+#                      '10': sim_scores[9][0]})
