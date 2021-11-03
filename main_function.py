@@ -302,7 +302,7 @@ def ssd_rtdb(user_id):
         sim_scores = [(pro2id[i], score) for i, score in sim_scores[0:10]]
 
         rec_ref = db.reference().child('rec').child(user_id)
-         data = {}
+        data = {}
         i = 0
         for name, score in sim_scores:
             data[str(i + 1)] = name
