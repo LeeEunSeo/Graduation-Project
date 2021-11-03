@@ -10,9 +10,10 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-cred = credentials.Certificate('goforit-af276-firebase-adminsdk-b3izz-b61829e785.json')
+
+cred = credentials.Certificate('gfi-rec-firebase-adminsdk-j8kaf-b945a590a2.json')
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://goforit-af276-default-rtdb.firebaseio.com/'
+    'databaseURL': 'https://gfi-rec-default-rtdb.firebaseio.com/'
 })
 
 
