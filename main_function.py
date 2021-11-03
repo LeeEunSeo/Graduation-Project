@@ -39,7 +39,7 @@ def ssd_rtdb(user_id):
         # raw[['prod_code', 'prod_id', 'prod_name', 'img_url', 'prod_info', 'price']]
         raw['price'] = pd.to_numeric(raw['price'])
 
-        raw.drop(raw.loc[raw['price'] < int(max_price)].index,
+        raw.drop(raw.loc[raw['price'] > int(max_price)].index,
                  inplace=True)  # max_price보다 큰 값을 price로 가지고 있는 행을 삭제하고 싶습니다.
 
         raw_len = len(raw)
