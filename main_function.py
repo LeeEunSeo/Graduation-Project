@@ -24,7 +24,6 @@ def ssd_rtdb(user_id):
     purpose_category = db.reference().child('rec_choice').child(user_id).child('purpose_category').get()
     if prod_id:
         # 1 - ë¬¸ì„œìž‘ì—…  2 - ê°•ì˜  3 - 5 ê²Œìž„(ì €,ì¤‘,ê³ )  6 - ì˜ìƒíŽ¸ì§‘  7 - 3Dê·¸ëž˜í”½  8 - í”„ë¡œê·¸ëž˜ë°
-        prod_id = str(prod_id).lower() + "list"
         # íŒŒì´ì–´ë² ì´ìŠ¤ ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
         ref = db.reference().child(prod_id)
         # Create a query against the collection
